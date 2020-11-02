@@ -28,8 +28,8 @@ public class ArrayExer {
 //        System.out.println(score());
 
         System.out.println(Arrays.toString(bubbleSort(arrays)));
-        System.out.println(Arrays.toString(swapSort(arrays)));
-        System.out.println(Arrays.toString(swapSortPos(arrays)));
+        System.out.println(Arrays.toString(selectSort(arrays)));
+        System.out.println(Arrays.toString(selectSortPos(arrays)));
     }
 
 
@@ -104,7 +104,7 @@ public class ArrayExer {
         System.out.println("min = " + min);
 
     }
-    
+
     static int max(int[] arr) {
         //Max
         int max = arr[0];
@@ -115,7 +115,7 @@ public class ArrayExer {
         }
         return max;
     }
-    
+
     static int min(int[] arr) {
         //Min
         int min = arr[0];
@@ -170,20 +170,22 @@ public class ArrayExer {
 
 
     /**
-     * @Description
      * @param
      * @return
+     * @Description 冒泡排序
+     * 从大到小排序 - 每次找到一个最大值
      * @author nisu
      * @date 15:34 2020/11/2
      */
     static int[] bubbleSort(int[] arr) {
-        for (int i = 1; i < arr.length ; i++) {
-            for (int j = 0; j < arr.length - i; j++) {
+        int len = arr.length;
+        //外层控制遍历次数(最后一个不需要,故次数少一)
+        for (int i = 1; i < len; i++) {
+            //控制待交换的两个值(j & j+1) -- j+1 < len
+            for (int j = 0; j < len - i; j++) {
                 //从小到大
                 if (arr[j] > arr[j + 1]) {
-                    int temp = arr[j + 1];
-                    arr[j] = arr[j + 1];
-                    arr[j] = temp;
+                    swap(arr, j, j + 1);
                 }
             }
         }
@@ -191,43 +193,52 @@ public class ArrayExer {
     }
 
     /**
-     * @Description 交换排序
      * @param arr
      * @return
+     * @Description 选择排序
+     * 从大到小排序 - 每次找到一个最小值
      * @author nisu
      * @date 19:04 2020/11/2
      */
 
-    static int[] swapSort( int[] arr ) {
-        for (int i = 0; i < arr.length - 1; i++) {
-            for (int j = i + 1; j < arr.length; j++) {
+    static int[] selectSort(int[] arr) {
+        int len = arr.length;
+        for (int i = 0; i <len - 1; i++) {
+            for (int j = i + 1; j < len; j++) {
                 //从小到大
                 if (arr[i] > arr[j]) {
                     swap(arr, i, j);
                 }
             }
-
         }
         return arr;
     }
-    static int[] swapSortPos( int[] arr ) {
 
-        for (int i = 0; i < arr.length - 1; i++) {
-            //pos 标记较大位置
+    /**
+     * @param arr
+     * @return
+     * @Description 带标记的选择排序
+     * @author nisu
+     * @date 19:44 2020/11/2
+     */
+
+    static int[] selectSortPos(int[] arr) {
+        int len = arr.length;
+        for (int i = 0; i < len - 1; i++) {
+            //pos 标记较小位置
             int pos = i;
-            for (int j = i + 1; j < arr.length; j++) {
+            for (int j = i + 1; j < len; j++) {
                 //从小到大
                 if (arr[i] > arr[j]) {
                     pos = j;
                 }
             }
             swap(arr, pos, i);
-
         }
         return arr;
     }
-    
-    static void swap( int[] arr, int a, int b) {
+
+    static void swap(int[] arr, int a, int b) {
         int temp = arr[a];
         arr[a] = arr[b];
         arr[b] = temp;
@@ -235,11 +246,11 @@ public class ArrayExer {
 
 
     static void maxXX() {
-        int[][] arr = {{1,2,3},{4,5,6},{7,8,9,10}};
+        int[][] arr = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9, 10}};
         int max = arr[0][0];
         for (int i = 0; i < arr.length; i++) {
             for (int j = 1; j < arr[i].length; j++) {
-                System.out.println("arr["+ i+ "][" + j +"] = " + arr[i][j]);
+                System.out.println("arr[" + i + "][" + j + "] = " + arr[i][j]);
             }
         }
         for (int i = 0; i < arr.length; i++) {
@@ -261,11 +272,9 @@ public class ArrayExer {
         double avgSco = (sum - max - min) * 1.0 / 3;
 
         return avgSco;
-
-
     }
 
-    static int[] getArr( int n) {
+    static int[] getArr(int n) {
         int[] array = new int[n];
         Scanner scanner = new Scanner(System.in);
         for (int i = 0; i < n; i++) {
