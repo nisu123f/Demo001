@@ -4,7 +4,7 @@ package com.learn.a;
  * @author admin
  * @create 2020/10/16
  */
-public class CompareGoods implements Comparable{
+public class CompareGoods implements Comparable<CompareGoods>{
     private String name;
     private Double price;
 
@@ -40,19 +40,16 @@ public class CompareGoods implements Comparable{
                 '}';
     }
 
+
     @Override
-    public int compareTo(Object o) {
-        if (o instanceof CompareGoods){
-            CompareGoods good = (CompareGoods) o;
-            int compare = Double.compare(this.price, good.price);
-            if (compare != 0) {
-                return compare;
-            }
-            else {
-                //价格相同时,按名字顺序排列   不加判断默认逆序
-                return -this.name.compareTo(good.name);
-            }
+    public int compareTo(CompareGoods good) {
+        int compare = Double.compare(this.price, good.price);
+        if (compare != 0) {
+            return compare;
         }
-        throw new RuntimeException("传入参数错误");
+        else {
+            //价格相同时,按名字顺序排列   不加判断默认逆序
+            return -this.name.compareTo(good.name);
+        }
     }
 }

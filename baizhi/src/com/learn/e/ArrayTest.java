@@ -3,7 +3,8 @@ package com.learn.e;
 import org.junit.Test;
 
 import java.util.Arrays;
-import java.util.stream.IntStream;
+import java.util.Comparator;
+
 
 /**
  * @author admin
@@ -58,5 +59,25 @@ public class ArrayTest {
 //        IntStream stream = Arrays.stream(arr);
 //        stream.filter(i -> arr[i] == n ).forEach(System.out::print);
 //    }
+
+    @Test
+    public void test5 () {
+        Integer[] arrInteger = {1,2,4,5,6,7,8};
+        Arrays.sort(arrInteger, (a,b) ->  -Integer.compare(a,b));
+        System.out.println(Arrays.toString(arrInteger));
+    }
+
+    @Test
+    public void test6 () {
+        int[] arr = {1,2,4,5,6,7,8};
+        Arrays.sort(arr, new Comparator<Integer>() {
+            @Override
+            public int compare(Integer a, Integer b) {
+                return Integer.compare(a,b);
+            }
+        });
+
+        System.out.println(Arrays.toString(arr));
+    }
 
 }
