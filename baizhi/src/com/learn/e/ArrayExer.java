@@ -29,6 +29,7 @@ public class ArrayExer {
 
         System.out.println(Arrays.toString(bubbleSort(arrays)));
         System.out.println(Arrays.toString(swapSort(arrays)));
+        System.out.println(Arrays.toString(swapSortPos(arrays)));
     }
 
 
@@ -201,14 +202,28 @@ public class ArrayExer {
         for (int i = 0; i < arr.length - 1; i++) {
             for (int j = i + 1; j < arr.length; j++) {
                 //从小到大
-                if (arr[i] < arr[j]) {
+                if (arr[i] > arr[j]) {
                     swap(arr, i, j);
                 }
             }
 
         }
+        return arr;
+    }
+    static int[] swapSortPos( int[] arr ) {
 
+        for (int i = 0; i < arr.length - 1; i++) {
+            //pos 标记较大位置
+            int pos = i;
+            for (int j = i + 1; j < arr.length; j++) {
+                //从小到大
+                if (arr[i] > arr[j]) {
+                    pos = j;
+                }
+            }
+            swap(arr, pos, i);
 
+        }
         return arr;
     }
     
