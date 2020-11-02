@@ -27,7 +27,8 @@ public class ArrayExer {
 
 //        System.out.println(score());
 
-        System.out.println(Arrays.toString(BubbleSort(arrays)));
+        System.out.println(Arrays.toString(bubbleSort(arrays)));
+        System.out.println(Arrays.toString(swapSort(arrays)));
     }
 
 
@@ -166,17 +167,6 @@ public class ArrayExer {
 
     //---能力提升---
 
-    /**
-     * @Description swap
-     * @param
-     * @return
-     * @author nisu
-     * @date 15:37 2020/11/2
-     */
-    static void swap(int a, int b) {
-
-    }
-
 
     /**
      * @Description
@@ -185,7 +175,7 @@ public class ArrayExer {
      * @author nisu
      * @date 15:34 2020/11/2
      */
-    static int[] BubbleSort(int[] arr) {
+    static int[] bubbleSort(int[] arr) {
         for (int i = 0; i < arr.length - 1; i++) {
             for (int j = 0; j < arr.length - 1 - i; j++) {
                 //从小到大
@@ -198,6 +188,36 @@ public class ArrayExer {
         }
         return arr;
     }
+
+    /**
+     * @Description 交换排序
+     * @param arr
+     * @return
+     * @author nisu
+     * @date 19:04 2020/11/2
+     */
+
+    static int[] swapSort( int[] arr ) {
+        for (int i = 0; i < arr.length - 1; i++) {
+            for (int j = i + 1; j < arr.length; j++) {
+                //从小到大
+                if (arr[i] < arr[j]) {
+                    swap(arr, i, j);
+                }
+            }
+
+        }
+
+
+        return arr;
+    }
+    
+    static void swap( int[] arr, int a, int b) {
+        int temp = arr[a];
+        arr[a] = arr[b];
+        arr[b] = temp;
+    }
+
 
     static void maxXX() {
         int[][] arr = {{1,2,3},{4,5,6},{7,8,9,10}};
