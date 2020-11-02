@@ -177,8 +177,8 @@ public class ArrayExer {
      * @date 15:34 2020/11/2
      */
     static int[] bubbleSort(int[] arr) {
-        for (int i = 0; i < arr.length - 1; i++) {
-            for (int j = 0; j < arr.length - 1 - i; j++) {
+        for (int i = 1; i < arr.length ; i++) {
+            for (int j = 0; j < arr.length - i; j++) {
                 //从小到大
                 if (arr[j] > arr[j + 1]) {
                     int temp = arr[j + 1];
