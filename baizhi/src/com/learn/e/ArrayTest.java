@@ -69,15 +69,15 @@ public class ArrayTest {
 
     @Test
     public void test6 () {
-        int[] arr = {1,2,4,5,6,7,8};
-        Arrays.sort(arr, new Comparator<Integer>() {
-            @Override
-            public int compare(Integer a, Integer b) {
-                return Integer.compare(a,b);
-            }
-        });
+//        int[] arr = {1,2,4,5,6,7,8};
+//        Arrays.sort(arr, new Comparator<Integer>() {
+//            @Override
+//            public int compare(Integer a, Integer b) {
+//                return Integer.compare(a,b);
+//            }
+//        });
 
-        System.out.println(Arrays.toString(arr));
+//        System.out.println(Arrays.toString(arr));
     }
 
 }
